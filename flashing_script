@@ -1,0 +1,18 @@
+#! /bin/bash
+echo "Connect the ARDUINO UNO on the PC with the two pins connected and then remove the jumper."
+read
+echo "Resetting ARDUINO to the default firmware ..."
+dfu-programmer atmega16u2 erase
+dfu-programmer atmega16u2 flash --suppress-bootloader-mem firmwares/Arduino-atmega16u2-Uno-Rev3.hex
+dfu-programmer atmega16u2 reset
+echo "Disconnect the ARDUINO from the pc and connect again."
+read
+echo "Enter the code in ARDUINO by the IDE."
+read
+echo "Connect the ARDUINO UNO on the PC with the two pins connected and then remove the jumper"
+read
+echo "Writing the keyboard firmware."
+dfu-programmer atmega16u2 erase
+dfu-programmer atmega16u2 flash firmwares/Arduino-keyboard-0.3.hex
+dfu-programmer atmega16u2 reset
+echo "Ready"
